@@ -1,0 +1,33 @@
+# Java / Maven
+**/target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+
+# IDE / editor
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Generated files
+*.tmp
+*.bak

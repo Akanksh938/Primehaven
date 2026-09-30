@@ -1,0 +1,17 @@
+server: { port: 8082 }
+spring:
+  application: { name: visit-service }
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/primehaven_visit?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${SPRING_DATASOURCE_USERNAME:${PRIMEHAVEN_DB_USER:root}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${PRIMEHAVEN_DB_PASSWORD:}}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+  jpa:
+    database-platform: ${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.MySQLDialect}
+    hibernate: { ddl-auto: update }
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client: { service-url: { defaultZone: http://127.0.0.1:8761/eureka/ } }

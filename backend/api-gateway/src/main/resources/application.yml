@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - 'http://localhost:5173'
+              - 'http://localhost:5174'
+            allowedMethods: '*'
+            allowedHeaders: '*'
+      routes:
+        - id: properties
+          uri: lb://property-service
+          predicates: [ Path=/api/properties/** ]
+        - id: visits
+          uri: lb://visit-service
+          predicates: [ Path=/api/visits/** ]
+        - id: inquiries
+          uri: lb://inquiry-service
+          predicates: [ Path=/api/inquiries/** ]
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/

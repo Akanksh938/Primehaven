@@ -1,0 +1,6 @@
+package com.primehaven.inquiry.entity;
+import jakarta.persistence.*; import jakarta.validation.constraints.*; import java.time.Instant;
+@Entity @Table(name="inquiries") public class Inquiry {
+ @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; @NotNull private Long propertyId; @NotBlank private String customerName; @NotBlank @Email private String customerEmail; private String customerPhone; @NotBlank @Column(length=2000) private String message; private String status="NEW"; private Instant createdAt=Instant.now();
+ public Long getId(){return id;} public void setId(Long v){id=v;} public Long getPropertyId(){return propertyId;} public void setPropertyId(Long v){propertyId=v;} public String getCustomerName(){return customerName;} public void setCustomerName(String v){customerName=v;} public String getCustomerEmail(){return customerEmail;} public void setCustomerEmail(String v){customerEmail=v;} public String getCustomerPhone(){return customerPhone;} public void setCustomerPhone(String v){customerPhone=v;} public String getMessage(){return message;} public void setMessage(String v){message=v;} public String getStatus(){return status;} public void setStatus(String v){status=v;} public Instant getCreatedAt(){return createdAt;} public void setCreatedAt(Instant v){createdAt=v;}
+}
